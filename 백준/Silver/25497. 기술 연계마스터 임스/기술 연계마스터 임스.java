@@ -11,11 +11,11 @@ public class Main {
         String skills = br.readLine();
         Stack<Character> lrStck = new Stack<>();
         Stack<Character> skStck = new Stack<>();
-        Character crr;
+        
         boolean flag = false;
         for (int i = 0; i < n; i++) {
             if (flag) break;
-            crr = skills.charAt(i);
+            Character crr = skills.charAt(i);
             if (Character.isDigit(crr)) {
                 cnt++;
             } else {
