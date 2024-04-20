@@ -1,17 +1,12 @@
 import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String[] strArr = br.readLine().split(" ");
-        int res = 0;
-        for (String str : strArr) {
-            if (str != "") {
-                res++;
-            }
-        }
-        System.out.println(res);
-       
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        System.out.println(st.countTokens());
+        
     }
 }
