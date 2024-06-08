@@ -6,17 +6,7 @@ class Solution {
         for (int i = 0 ; i < files.length; i++) {
             arr[i] = new MyFile(files[i], i);
         }
-        Arrays.sort(arr, ((o1, o2) -> {
-            if (o1.head.equalsIgnoreCase(o2.head)) {
-                if (o1.number == o2.number) {
-                    return o1.originalIndex - o2.originalIndex;
-                } else {
-                    return o1.number - o2.number;
-                }
-            } else {
-                return o1.head.compareToIgnoreCase(o2.head);
-            }
-        }));
+        Arrays.sort(arr);
         String[] answer = new String[files.length];
         for (int i = 0; i < files.length; i++) {
             answer[i] = files[arr[i].originalIndex];
@@ -25,11 +15,11 @@ class Solution {
     }
 }
 
-class MyFile {
+class MyFile implements Comparable {
     String head;
     int number;
     int originalIndex;
-    
+
     public MyFile(String str, int index) {
         int leftNumberIdx = getLeftNumberIdx(str);
         int rightNumberIdx = getRightNumberIdx(str, leftNumberIdx);
@@ -55,5 +45,18 @@ class MyFile {
         }
         return str.length() - 1;
     }
-    
+
+    @Override
+    public int compareTo(Object o) {
+        MyFile target = (MyFile) o;
+        if (this.head.equalsIgnoreCase(target.head)) {
+            if (this.number == target.number) {
+                return this.originalIndex - target.originalIndex;
+            } else {
+                return this.number - target.number;
+            }
+        } else {
+            return this.head.compareToIgnoreCase(target.head);
+        }
+    }
 }
